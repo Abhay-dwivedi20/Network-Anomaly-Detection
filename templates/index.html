@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anomaly Detection - Upload CSV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #1f2937, #4b5563);
+            color: #f9fafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #111827;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 10px;
+            padding: 10px 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-name {
+            color: #9ca3af;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+            max-width: 300px;
+        }
+
+        .custom-button {
+            background-color: transparent;
+            color: #60a5fa;
+            border: 1px solid #60a5fa;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #60a5fa;
+            color: #1f2937;
+        }
+
+        button[type="submit"] {
+            padding: 12px 24px;
+            background-color: #3b82f6;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>🚀 Anomaly Detection</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="file-upload">
+                <span class="file-name" id="file-name">No file chosen</span>
+                <label class="custom-button">
+                    Choose File
+                    <input type="file" name="file" accept=".csv" required onchange="updateFileName(this)">
+                </label>
+            </div>
+            <button type="submit">Detect Anomalies</button>
+        </form>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            const fileName = input.files[0]?.name || "No file chosen";
+            document.getElementById("file-name").textContent = fileName;
+        }
+    </script>
+</body>
+
+</html>
